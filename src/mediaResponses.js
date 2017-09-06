@@ -14,10 +14,11 @@ const loadFile = (request, response, filePath, mime) => {
     }
 
     // check to see if client sent a range header
-    const range = request.headers.range;
+    let range = request.headers.range;
 
     if (!range) {
-      return response.writeHead(416);
+      //return response.writeHead(416);
+        range = 'bytes=0-';
     }
 
     // Grab Byte range from request's range header
